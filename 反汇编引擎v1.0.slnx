@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="反汇编引擎v1.0.vcxproj" Id="a3930259-9c25-46b5-8d97-066cf0ea025a" />
+</Solution>
