@@ -69,7 +69,7 @@ const GroupEntry group_tables[MAX_GROUPS + 1][MAX_REG_COUNT] = {
 
 
 
-	// ... ¿ÉÒÔ¼ÌĞøÌí¼Ó¸ü¶à Group ±í
+	// ... å¯ä»¥ç»§ç»­æ·»åŠ æ›´å¤š Group è¡¨
 
 
 };
@@ -91,7 +91,7 @@ const OpcodeEntry opcode_table[256] = {
     [0x0c] = {"OR",0, 0, OP_AL, Ib, NONE, NULL},
     [0x0d] = {"OR",0, 0, OP_rAX, Iz, NONE, NULL},
     [0x0e] = {"PUSH",0, 0, OP_CS, NONE, NONE, NULL},
-	[0x0f] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //0FÀ©Õ¹Ç°×º
+	[0x0f] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //0Fæ‰©å±•å‰ç¼€
 	//0x10 - 0x1F
 	[0x10] = {"ADC",0, HAS_MODRM, Eb, Gb, NONE, NULL},
     [0x11] = {"ADC",0, HAS_MODRM, Ev, Gv, NONE, NULL},
@@ -116,7 +116,7 @@ const OpcodeEntry opcode_table[256] = {
     [0x23] = {"AND",0, HAS_MODRM, Gv, Ev, NONE, NULL},
     [0x24] = {"AND",0, 0, OP_AL, Ib, NONE, NULL},
     [0x25] = {"AND",0, 0, OP_rAX, Iz, NONE, NULL},
-	[0x26] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //ES¶ÎÇ°×º
+	[0x26] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //ESæ®µå‰ç¼€
     [0x27] = {"DAA",0, 0, NONE, NONE, NONE, NULL},
     [0x28] = {"SUB",0, HAS_MODRM, Eb, Gb, NONE, NULL},
     [0x29] = {"SUB",0, HAS_MODRM, Ev, Gv, NONE, NULL},
@@ -124,7 +124,7 @@ const OpcodeEntry opcode_table[256] = {
     [0x2b] = {"SUB",0, HAS_MODRM, Gv, Ev, NONE, NULL},
     [0x2c] = {"SUB",0, 0, OP_AL, Ib, NONE, NULL},
     [0x2d] = {"SUB",0, 0, OP_rAX, Iz, NONE, NULL},
-	[0x2e] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //CS¶ÎÇ°×º
+	[0x2e] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //CSæ®µå‰ç¼€
 	[0x2f] = {"DAS",0 , 0 , NONE , NONE , NONE , NULL},
     //0x30 - 0x3F
     [0x30] = {"XOR",0, HAS_MODRM, Eb, Gb, NONE, NULL},
@@ -133,7 +133,7 @@ const OpcodeEntry opcode_table[256] = {
     [0x33] = {"XOR",0, HAS_MODRM, Gv, Ev, NONE, NULL},
     [0x34] = {"XOR",0, 0, OP_AL, Ib, NONE, NULL},
     [0x35] = {"XOR",0, 0, OP_rAX, Iz, NONE, NULL},
-	[0x36] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //SS¶ÎÇ°×º
+	[0x36] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //SSæ®µå‰ç¼€
     [0x37] = {"AAA",0 , 0 , NONE , NONE , NONE , NULL},
     [0x38] = {"CMP",0, HAS_MODRM, Eb, Gb, NONE, NULL},
     [0x39] = {"CMP",0, HAS_MODRM, Ev, Gv, NONE, NULL},
@@ -141,7 +141,7 @@ const OpcodeEntry opcode_table[256] = {
     [0x3b] = {"CMP",0, HAS_MODRM, Gv, Ev, NONE, NULL},
     [0x3c] = {"CMP",0, 0, OP_AL, Ib, NONE, NULL},
     [0x3d] = {"CMP",0, 0, OP_rAX, Iz, NONE, NULL},
-	[0x3e] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //DS¶ÎÇ°×º
+	[0x3e] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //DSæ®µå‰ç¼€
 	[0x3f] = {"AAS",0 , 0 , NONE , NONE , NONE , NULL},
     //0x40 - 0x4F
     [0x40] = {"INC",0, 0, OP_rAX, NONE, NONE, NULL},
@@ -178,14 +178,14 @@ const OpcodeEntry opcode_table[256] = {
 	[0x5e] = {"POP",0 , 0 , OP_rSI , NONE , NONE , NULL},
 	[0x5f] = { "POP",0 , 0 , OP_rDI , NONE , NONE , NULL },
     //0x60 - 0x6F
-    [0x60] = {"PUSHAD",0, 0, NONE, NONE, NONE, NULL}, //×¢ÒâÓĞ66Ç°×ºÊ±£¬ĞŞ¸Äµ±Ç°·ÖÎöÏîÖú¼Ç´ÊPUSHA
+    [0x60] = {"PUSHAD",0, 0, NONE, NONE, NONE, NULL}, //æ³¨æ„æœ‰66å‰ç¼€æ—¶ï¼Œä¿®æ”¹å½“å‰åˆ†æé¡¹åŠ©è®°è¯PUSHA
     [0x61] = {"POPAD",0, 0, NONE, NONE, NONE, NULL}, //
     [0x62] = {"BOUND",0, HAS_MODRM, Gv, Mv, NONE, NULL},
     [0x63] = {"ARPL",0, HAS_MODRM, Ew, Gw, NONE, NULL},
-	[0x64] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL }, //FS¶ÎÇ°×º
-	[0x65] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL }, //GS¶ÎÇ°×º
-	[0x66] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL }, //²Ù×÷Êı´óĞ¡Ç°×º
-    [0x67] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //µØÖ·´óĞ¡Ç°×º
+	[0x64] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL }, //FSæ®µå‰ç¼€
+	[0x65] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL }, //GSæ®µå‰ç¼€
+	[0x66] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL }, //æ“ä½œæ•°å¤§å°å‰ç¼€
+    [0x67] = { NULL ,IS_PREFIX,0, NONE , NONE, NONE, NULL}, //åœ°å€å¤§å°å‰ç¼€
     [0x68] = {"PUSH",0, 0, Iz, NONE, NONE, NULL},
     [0x69] = {"IMUL",0, HAS_MODRM, Gv, Ev, Iz, NULL},
     [0x6a] = {"PUSH",0, 0, Ib, NONE, NONE, NULL},
@@ -212,16 +212,16 @@ const OpcodeEntry opcode_table[256] = {
 	[0x7e] = { "JLE",0 , 0 , Jb , NONE , NONE , NULL },
     [0x7f] = {"JG",0, 0, Jb, NONE, NONE, NULL},
 	//0x80 - 0x8F
-	[0x80] = { NULL, 0, HAS_MODRM, Eb, Ib, NONE, (GroupEntry*)group_tables[0] },  //Group 1 ÌØÀı£ºgroup_tables[0]£¬group_tables[1]group_id¶¼ÉèÖÃÎª1£¬·½±ãÅĞ¶Ï¡£
+	[0x80] = { NULL, 0, HAS_MODRM, Eb, Ib, NONE, (GroupEntry*)group_tables[0] },  //Group 1 ç‰¹ä¾‹ï¼šgroup_tables[0]ï¼Œgroup_tables[1]group_idéƒ½è®¾ç½®ä¸º1ï¼Œæ–¹ä¾¿åˆ¤æ–­ã€‚
     [0x81] = {NULL, 0, HAS_MODRM, Ev, Iz, NONE, (GroupEntry*)group_tables[0]},
 	[0x82] = { NULL, 0, HAS_MODRM, Eb, Ib, NONE, (GroupEntry*)group_tables[0] },
     [0x83] = {NULL, 0, HAS_MODRM, Ev, Ib, NONE, (GroupEntry*)group_tables[0]},
     /*
-    ²Ù×÷Êıµ½µ×¸ÃÌıË­µÄ£¿
-    ´ğ°¸ÊÇ£º²ÉÓÃ¡°¼Ì³Ğ + ¸²¸Ç¡±µÄ²ßÂÔ¡£
-    ²»ÓÃ¼ÓĞÂ²ÎÊı¡£ÄãĞèÒªÀí½â Intel ÎÄµµµÄÒ»¸öÇ±¹æÔò£º
-        ¶ÔÓÚ Group 1 (0x80 - 0x83) ÕâÀàÖ¸Áî£ºÖ÷±í£¨Main Map£©¶¨²Ù×÷ÊıÀàĞÍ£¬Group ±í¶¨Öú¼Ç·û¡£
-        ¶ÔÓÚ Group 3 (0xF6 - 0xF7) ÕâÀàÖ¸Áî£ºGroup ±í¼È¶¨Öú¼Ç·û£¬Ò²¶¨²Ù×÷ÊıÀàĞÍ£¨»á¸²¸ÇÖ÷±í£©¡£
+    æ“ä½œæ•°åˆ°åº•è¯¥å¬è°çš„ï¼Ÿ
+    ç­”æ¡ˆæ˜¯ï¼šé‡‡ç”¨â€œç»§æ‰¿ + è¦†ç›–â€çš„ç­–ç•¥ã€‚
+    ä¸ç”¨åŠ æ–°å‚æ•°ã€‚ä½ éœ€è¦ç†è§£ Intel æ–‡æ¡£çš„ä¸€ä¸ªæ½œè§„åˆ™ï¼š
+        å¯¹äº Group 1 (0x80 - 0x83) è¿™ç±»æŒ‡ä»¤ï¼šä¸»è¡¨ï¼ˆMain Mapï¼‰å®šæ“ä½œæ•°ç±»å‹ï¼ŒGroup è¡¨å®šåŠ©è®°ç¬¦ã€‚
+        å¯¹äº Group 3 (0xF6 - 0xF7) è¿™ç±»æŒ‡ä»¤ï¼šGroup è¡¨æ—¢å®šåŠ©è®°ç¬¦ï¼Œä¹Ÿå®šæ“ä½œæ•°ç±»å‹ï¼ˆä¼šè¦†ç›–ä¸»è¡¨ï¼‰ã€‚
     */
     [0x84] = {"TEST",0, HAS_MODRM, Eb, Gb, NONE, NULL},
     [0x85] = {"TEST",0, HAS_MODRM, Ev, Gv, NONE, NULL},
@@ -231,12 +231,12 @@ const OpcodeEntry opcode_table[256] = {
     [0x89] = {"MOV",0, HAS_MODRM, Ev, Gv, NONE, NULL},
     [0x8a] = {"MOV",0, HAS_MODRM, Gb, Eb, NONE, NULL},
     [0x8b] = {"MOV",0, HAS_MODRM, Gv, Ev, NONE, NULL},
-	[0x8c] = { "MOV",0, HAS_MODRM, Ew, Sw , NONE , NULL }, //SwÓÃreg×Ö¶Î±íÊ¾¶Î¼Ä´æÆ÷,´òÓ¡Ê±×¢Òâ½âÎö
+	[0x8c] = { "MOV",0, HAS_MODRM, Ew, Sw , NONE , NULL }, //Swç”¨regå­—æ®µè¡¨ç¤ºæ®µå¯„å­˜å™¨,æ‰“å°æ—¶æ³¨æ„è§£æ
     [0x8d] = {"LEA",0, HAS_MODRM, Gv, M , NONE , NULL},
     [0x8e] = {"MOV",0, HAS_MODRM, Sw , Ew , NONE , NULL},
 	[0x8f] = { NULL , 0, HAS_MODRM , NONE , NONE , NONE , (GroupEntry*)group_tables[1] }, //Group 1A
     //0x90 - 0x9F
-    [0x90] = {"NOP",0, 0, NONE, NONE, NONE, NULL},       //F3Ç°×ºÊ±ÎªÔİÍ£PAUSE
+    [0x90] = {"NOP",0, 0, NONE, NONE, NONE, NULL},       //F3å‰ç¼€æ—¶ä¸ºæš‚åœPAUSE
     [0x91] = {"XCHG",0, 0, OP_rAX, OP_rCX, NONE, NULL},
     [0x92] = {"XCHG",0, 0, OP_rAX, OP_rDX, NONE, NULL},
     [0x93] = {"XCHG",0, 0, OP_rAX, OP_rBX, NONE, NULL},
@@ -244,12 +244,12 @@ const OpcodeEntry opcode_table[256] = {
     [0x95] = {"XCHG",0, 0, OP_rAX, OP_rBP, NONE, NULL},
     [0x96] = {"XCHG",0, 0, OP_rAX, OP_rSI, NONE, NULL},
     [0x97] = {"XCHG",0, 0, OP_rAX, OP_rDI, NONE, NULL},
-    [0x98] = {"CWDE",0, 0, NONE, NONE, NONE, NULL},  //66Ç°×ºÊ±£¬ĞŞ¸Äµ±Ç°·ÖÎöÏîÖú¼Ç´ÊÎªCBW
-    [0x99] = {"CDQ",0, 0, NONE, NONE, NONE, NULL},   //66Ç°×ºÊ±£¬ĞŞ¸Äµ±Ç°·ÖÎöÏîÖú¼Ç´ÊÎªCWD
-	[0x9a] = { "CALL",0, 0, Ap , NONE , NONE , NULL },  //µ÷ÓÃÔ¶³Ì¹ı³Ì
+    [0x98] = {"CWDE",0, 0, NONE, NONE, NONE, NULL},  //66å‰ç¼€æ—¶ï¼Œä¿®æ”¹å½“å‰åˆ†æé¡¹åŠ©è®°è¯ä¸ºCBW
+    [0x99] = {"CDQ",0, 0, NONE, NONE, NONE, NULL},   //66å‰ç¼€æ—¶ï¼Œä¿®æ”¹å½“å‰åˆ†æé¡¹åŠ©è®°è¯ä¸ºCWD
+	[0x9a] = { "CALL",0, 0, Ap , NONE , NONE , NULL },  //è°ƒç”¨è¿œç¨‹è¿‡ç¨‹
     [0x9b] = {"FWAIT",0, 0, NONE, NONE, NONE, NULL},
-	[0x9c] = { "PUSHFD",0, 0, NONE , NONE , NONE , NULL }, //66Ç°×ºÊ±£¬ĞŞ¸Äµ±Ç°·ÖÎöÏîÖú¼Ç·ûÎªPUSHF
-	[0x9d] = {"POPFD",0 , 0 , NONE , NONE , NONE , NULL }, //66Ç°×ºÊ±£¬ĞŞ¸Äµ±Ç°·ÖÎöÏîÖú¼Ç·ûÎªPOPF
+	[0x9c] = { "PUSHFD",0, 0, NONE , NONE , NONE , NULL }, //66å‰ç¼€æ—¶ï¼Œä¿®æ”¹å½“å‰åˆ†æé¡¹åŠ©è®°ç¬¦ä¸ºPUSHF
+	[0x9d] = {"POPFD",0 , 0 , NONE , NONE , NONE , NULL }, //66å‰ç¼€æ—¶ï¼Œä¿®æ”¹å½“å‰åˆ†æé¡¹åŠ©è®°ç¬¦ä¸ºPOPF
 	[0x9e] = {"SAHF",0, 0, NONE , NONE , NONE , NULL },
     [0x9f] = {"LAHF",0, 0, NONE , NONE , NONE , NULL },
 	//0xA0 - 0xAF
@@ -258,17 +258,17 @@ const OpcodeEntry opcode_table[256] = {
     [0xa2] = {"MOV",0, 0, Ob, OP_AL, NONE, NULL},
     [0xa3] = {"MOV",0, 0, Ov, OP_rAX, NONE, NULL},
     [0xa4] = {"MOVSB",0, 0, NONE, NONE, NONE, NULL},
-	[0xa5] = {"MOVSD",0, 0, NONE, NONE, NONE, NULL }, //66Ç°×ºÊ±ÎªMOVSW
+	[0xa5] = {"MOVSD",0, 0, NONE, NONE, NONE, NULL }, //66å‰ç¼€æ—¶ä¸ºMOVSW
     [0xa6] = {"CMPSB",0, 0, NONE, NONE, NONE, NULL},
-	[0xa7] = {"CMPSD",0, 0, NONE, NONE, NONE, NULL }, //66Ç°×ºÊ±ÎªCMPSW
+	[0xa7] = {"CMPSD",0, 0, NONE, NONE, NONE, NULL }, //66å‰ç¼€æ—¶ä¸ºCMPSW
     [0xa8] = {"TEST",0, 0, OP_AL, Ib, NONE, NULL},
     [0xa9] = {"TEST",0, 0, OP_rAX, Iz, NONE, NULL},
     [0xaa] = {"STOSB",0, 0, NONE, NONE, NONE, NULL},
-	[0xab] = {"STOSD",0, 0, NONE, NONE, NONE, NULL },  //66Ç°×ºÊ±ÎªSTOSW
+	[0xab] = {"STOSD",0, 0, NONE, NONE, NONE, NULL },  //66å‰ç¼€æ—¶ä¸ºSTOSW
     [0xac] = {"LODSB",0, 0, NONE , NONE , NONE , NULL},
-	[0xad] = { "LODSD",0 , 0 , NONE , NONE , NONE , NULL }, //66Ç°×ºÊ±ÎªLODSW
+	[0xad] = { "LODSD",0 , 0 , NONE , NONE , NONE , NULL }, //66å‰ç¼€æ—¶ä¸ºLODSW
     [0xae] = {"SCASB",0 , 0 , NONE , NONE , NONE , NULL},
-	[0xaf] = { "SCASD",0 , 0 , NONE , NONE , NONE , NULL }, //66Ç°×ºÊ±ÎªSCASW
+	[0xaf] = { "SCASD",0 , 0 , NONE , NONE , NONE , NULL }, //66å‰ç¼€æ—¶ä¸ºSCASW
     //0xB0 - 0xBF
     [0xb0] = {"MOV",0, 0, OP_AL, Ib, NONE, NULL},
     [0xb1] = {"MOV",0, 0, OP_CL, Ib, NONE, NULL},
@@ -302,7 +302,7 @@ const OpcodeEntry opcode_table[256] = {
     [0xcc] = {"| INT 3",0, 0, NONE, NONE, NONE, NULL},
     [0xcd] = {"INT",0, 0, Ib, NONE, NONE, NULL},
     [0xce] = {"INTO",0, 0, NONE, NONE, NONE, NULL},
-	[0xcf] = { "IRETD",0, 0, NONE, NONE, NONE, NULL }, //66Ç°×ºÊ±ÎªIRET
+	[0xcf] = { "IRETD",0, 0, NONE, NONE, NONE, NULL }, //66å‰ç¼€æ—¶ä¸ºIRET
     //0xD0 - 0xDF
     [0xD0] = {NULL,0, HAS_MODRM, Eb, OP_ONE, NONE, (GroupEntry*)group_tables[2]},
     [0xD1] = {NULL,0, HAS_MODRM, Ev, OP_ONE, NONE, (GroupEntry*)group_tables[2]},
@@ -312,7 +312,7 @@ const OpcodeEntry opcode_table[256] = {
     [0xD5] = {"AAD",0, 0, Ib, NONE, NONE, NULL},
     [0xD6] = {"SALC",0, 0, NONE, NONE, NONE, NULL},
     [0xD7] = {"XLATB",0, 0, NONE, NONE, NONE, NULL},
-    [0xd8] = { "FPU", 0, HAS_MODRM, NONE, NONE, NONE, NULL }, // D8 FPU£¬HAS_MODRMÊÇ±ØÒªµÄ£¬Òª±£Ö¤·´»ã±àÆ÷ÄÜÕıÈ·¼ÆËãÖ¸Áî³¤¶È²¢Ìøµ½ÏÂÒ»ÌõÖ¸Áî
+    [0xd8] = { "FPU", 0, HAS_MODRM, NONE, NONE, NONE, NULL }, // D8 FPUï¼ŒHAS_MODRMæ˜¯å¿…è¦çš„ï¼Œè¦ä¿è¯åæ±‡ç¼–å™¨èƒ½æ­£ç¡®è®¡ç®—æŒ‡ä»¤é•¿åº¦å¹¶è·³åˆ°ä¸‹ä¸€æ¡æŒ‡ä»¤
     [0xd9] = { "FPU", 0, HAS_MODRM, NONE, NONE, NONE, NULL }, 
     [0xda] = { "FPU", 0, HAS_MODRM, NONE, NONE, NONE, NULL }, 
     [0xdb] = { "FPU", 0, HAS_MODRM, NONE, NONE, NONE, NULL }, 
@@ -346,8 +346,8 @@ const OpcodeEntry opcode_table[256] = {
     [0xf5] = { "CMC",   0, 0, NONE, NONE, NONE, NULL },
     // Group 3 (TEST, NOT, NEG, MUL, IMUL, DIV, IDIV)
     // F6: Byte operands. F7: Word/Dword operands.
-    // ²Ù×÷ÊıÓÉ Group Table ¶¨Òå£¬Opcode ±íÕâÀïÖÃÎª NONE ±ÜÃâ³åÍ»
-    // ÄãµÄÒıÇæĞèÒªÄÜÊ¶±ğ³ö 0xF6 Ê¹ÓÃ Group 3 µÄ Eb °æ±¾£¬0xF7 Ê¹ÓÃ Ev °æ±¾
+    // æ“ä½œæ•°ç”± Group Table å®šä¹‰ï¼ŒOpcode è¡¨è¿™é‡Œç½®ä¸º NONE é¿å…å†²çª
+    // ä½ çš„å¼•æ“éœ€è¦èƒ½è¯†åˆ«å‡º 0xF6 ä½¿ç”¨ Group 3 çš„ Eb ç‰ˆæœ¬ï¼Œ0xF7 ä½¿ç”¨ Ev ç‰ˆæœ¬
     [0xf6] = { NULL, 0, HAS_MODRM, NONE , NONE, NONE, (GroupEntry*)group_tables[3] },
     [0xf7] = { NULL, 0, HAS_MODRM, NONE, NONE, NONE, (GroupEntry*)group_tables[17] },
 
@@ -368,18 +368,18 @@ const OpcodeEntry opcode_table[256] = {
 };
 
 const OpcodeEntry two_byte_opcode_table[256] = {
-    // 0x00 - 0x0F (²¿·ÖÏµÍ³Ö¸Áî£¬Í¨³£ÓÉGroup 6/7´¦Àí£¬ÕâÀïÁĞ³ö³£¼ûµÄ¶ÀÁ¢Ö¸Áî)
+    // 0x00 - 0x0F (éƒ¨åˆ†ç³»ç»ŸæŒ‡ä»¤ï¼Œé€šå¸¸ç”±Group 6/7å¤„ç†ï¼Œè¿™é‡Œåˆ—å‡ºå¸¸è§çš„ç‹¬ç«‹æŒ‡ä»¤)
     [0x05] = {"SYSCALL", 0, 0, NONE, NONE, NONE, NULL},
-    [0x0B] = {"UD2", 0, 0, NONE, NONE, NONE, NULL}, // ¶¨ÒåÎ´¶¨ÒåÖ¸Áî£¬ÓÃÓÚ´¥·¢Òì³£
+    [0x0B] = {"UD2", 0, 0, NONE, NONE, NONE, NULL}, // å®šä¹‰æœªå®šä¹‰æŒ‡ä»¤ï¼Œç”¨äºè§¦å‘å¼‚å¸¸
 
-    // 0x10 - 0x1F (SIMD/SSE ºÜ¶àÔÚÕâÀï£¬·´»ã±àÒıÇæÇ°ÆÚ¿ÉÒÔÏÈÌø¹ı£¬ÕâÀïÖ»Ğ´³£¼ûµÄ)
-    [0x1F] = {"NOP", 0, HAS_MODRM, Ev, NONE, NONE, NULL}, // ¶à×Ö½Ú NOP (Group 16)
+    // 0x10 - 0x1F (SIMD/SSE å¾ˆå¤šåœ¨è¿™é‡Œï¼Œåæ±‡ç¼–å¼•æ“å‰æœŸå¯ä»¥å…ˆè·³è¿‡ï¼Œè¿™é‡Œåªå†™å¸¸è§çš„)
+    [0x1F] = {"NOP", 0, HAS_MODRM, Ev, NONE, NONE, NULL}, // å¤šå­—èŠ‚ NOP (Group 16)
 
     // 0x30 - 0x3F
-    [0x31] = {"RDTSC", 0, 0, NONE, NONE, NONE, NULL}, // ¶ÁÊ±¼ä´Á¼ÆÊıÆ÷
+    [0x31] = {"RDTSC", 0, 0, NONE, NONE, NONE, NULL}, // è¯»æ—¶é—´æˆ³è®¡æ•°å™¨
 
-    // 0x40 - 0x4F: CMOVcc (Ìõ¼ş´«ËÍ) - ·Ç³£³£¼û£¡±àÒëÆ÷ÓÅ»¯µÄ×î°®
-    // ¸ñÊ½: CMOVcc Gv, Ev (¼Ä´æÆ÷ = ÄÚ´æ/¼Ä´æÆ÷)
+    // 0x40 - 0x4F: CMOVcc (æ¡ä»¶ä¼ é€) - éå¸¸å¸¸è§ï¼ç¼–è¯‘å™¨ä¼˜åŒ–çš„æœ€çˆ±
+    // æ ¼å¼: CMOVcc Gv, Ev (å¯„å­˜å™¨ = å†…å­˜/å¯„å­˜å™¨)
     [0x40] = {"CMOVO",  0, HAS_MODRM, Gv, Ev, NONE, NULL},
     [0x41] = {"CMOVNO", 0, HAS_MODRM, Gv, Ev, NONE, NULL},
     [0x42] = {"CMOVB",  0, HAS_MODRM, Gv, Ev, NONE, NULL},
@@ -415,8 +415,8 @@ const OpcodeEntry two_byte_opcode_table[256] = {
     [0x8e] = {"JLE", 0, 0, Jz, NONE, NONE, NULL},
     [0x8f] = {"JG",  0, 0, Jz, NONE, NONE, NULL},
 
-    // 0x90 - 0x9F: SETcc (Ìõ¼şÖÃÎ») - ½«Ìõ¼ş½á¹ûĞ´ÈëÒ»¸ö×Ö½Ú
-    // ¸ñÊ½: SETcc Eb (×¢Òâ£º²Ù×÷ÊıÊÇEb£¬Ğ´Èë8Î»¼Ä´æÆ÷»òÄÚ´æ)
+    // 0x90 - 0x9F: SETcc (æ¡ä»¶ç½®ä½) - å°†æ¡ä»¶ç»“æœå†™å…¥ä¸€ä¸ªå­—èŠ‚
+    // æ ¼å¼: SETcc Eb (æ³¨æ„ï¼šæ“ä½œæ•°æ˜¯Ebï¼Œå†™å…¥8ä½å¯„å­˜å™¨æˆ–å†…å­˜)
     [0x90] = {"SETO",  0, HAS_MODRM, Eb, NONE, NONE, NULL},
     [0x91] = {"SETNO", 0, HAS_MODRM, Eb, NONE, NONE, NULL},
     [0x92] = {"SETB",  0, HAS_MODRM, Eb, NONE, NONE, NULL},
@@ -434,35 +434,35 @@ const OpcodeEntry two_byte_opcode_table[256] = {
     [0x9e] = {"SETLE", 0, HAS_MODRM, Eb, NONE, NONE, NULL},
     [0x9f] = {"SETG",  0, HAS_MODRM, Eb, NONE, NONE, NULL},
 
-    // 0xA0 - 0xAF: Õ»¶Î²Ù×÷¡¢Î»²âÊÔ¡¢Ë«²Ù×÷Êı³Ë·¨
+    // 0xA0 - 0xAF: æ ˆæ®µæ“ä½œã€ä½æµ‹è¯•ã€åŒæ“ä½œæ•°ä¹˜æ³•
     [0xa0] = {"PUSH",  0, 0, OP_FS, NONE, NONE, NULL},
     [0xa1] = {"POP",   0, 0, OP_FS, NONE, NONE, NULL},
     [0xa2] = {"CPUID", 0, 0, NONE,  NONE, NONE, NULL},
     [0xa3] = {"BT",    0, HAS_MODRM, Ev, Gv, NONE, NULL}, // Bit Test
-    [0xa4] = {"SHLD",  0, HAS_MODRM, Ev, Gv, Ib,   NULL}, // Ë«¾«¶È×óÒÆ (Á¢¼´Êı)
-    [0xa5] = {"SHLD",  0, HAS_MODRM, Ev, Gv, OP_CL,NULL}, // Ë«¾«¶È×óÒÆ (CL)
+    [0xa4] = {"SHLD",  0, HAS_MODRM, Ev, Gv, Ib,   NULL}, // åŒç²¾åº¦å·¦ç§» (ç«‹å³æ•°)
+    [0xa5] = {"SHLD",  0, HAS_MODRM, Ev, Gv, OP_CL,NULL}, // åŒç²¾åº¦å·¦ç§» (CL)
     [0xa8] = {"PUSH",  0, 0, OP_GS, NONE, NONE, NULL},
     [0xa9] = {"POP",   0, 0, OP_GS, NONE, NONE, NULL},
-    [0xac] = {"SHRD",  0, HAS_MODRM, Ev, Gv, Ib,   NULL}, // Ë«¾«¶ÈÓÒÒÆ (Á¢¼´Êı)
-    [0xad] = {"SHRD",  0, HAS_MODRM, Ev, Gv, OP_CL,NULL}, // Ë«¾«¶ÈÓÒÒÆ (CL)
-    [0xaf] = {"IMUL",  0, HAS_MODRM, Gv, Ev, NONE, NULL}, // ÕâÀïµÄIMULÊÇË«²Ù×÷Êı°æ±¾£ºreg = reg * r/m
+    [0xac] = {"SHRD",  0, HAS_MODRM, Ev, Gv, Ib,   NULL}, // åŒç²¾åº¦å³ç§» (ç«‹å³æ•°)
+    [0xad] = {"SHRD",  0, HAS_MODRM, Ev, Gv, OP_CL,NULL}, // åŒç²¾åº¦å³ç§» (CL)
+    [0xaf] = {"IMUL",  0, HAS_MODRM, Gv, Ev, NONE, NULL}, // è¿™é‡Œçš„IMULæ˜¯åŒæ“ä½œæ•°ç‰ˆæœ¬ï¼šreg = reg * r/m
 
-    // 0xB0 - 0xBF: À©Õ¹ÒÆ¶¯¡¢Î»É¨Ãè (·Ç³£³£¼û)
-    [0xb0] = {"CMPXCHG", 0, HAS_MODRM, Eb, Gb, NONE, NULL}, // ±È½Ï²¢½»»» Byte
-    [0xb1] = {"CMPXCHG", 0, HAS_MODRM, Ev, Gv, NONE, NULL}, // ±È½Ï²¢½»»» Word/Dword
-    [0xb6] = {"MOVZX",   0, HAS_MODRM, Gv, Eb, NONE, NULL}, // ÁãÀ©Õ¹ÒÆ¶¯ Byte -> Word/Dword
-    [0xb7] = {"MOVZX",   0, HAS_MODRM, Gv, Ew, NONE, NULL}, // ÁãÀ©Õ¹ÒÆ¶¯ Word -> Dword
+    // 0xB0 - 0xBF: æ‰©å±•ç§»åŠ¨ã€ä½æ‰«æ (éå¸¸å¸¸è§)
+    [0xb0] = {"CMPXCHG", 0, HAS_MODRM, Eb, Gb, NONE, NULL}, // æ¯”è¾ƒå¹¶äº¤æ¢ Byte
+    [0xb1] = {"CMPXCHG", 0, HAS_MODRM, Ev, Gv, NONE, NULL}, // æ¯”è¾ƒå¹¶äº¤æ¢ Word/Dword
+    [0xb6] = {"MOVZX",   0, HAS_MODRM, Gv, Eb, NONE, NULL}, // é›¶æ‰©å±•ç§»åŠ¨ Byte -> Word/Dword
+    [0xb7] = {"MOVZX",   0, HAS_MODRM, Gv, Ew, NONE, NULL}, // é›¶æ‰©å±•ç§»åŠ¨ Word -> Dword
     [0xbc] = {"BSF",     0, HAS_MODRM, Gv, Ev, NONE, NULL}, // Bit Scan Forward
     [0xbd] = {"BSR",     0, HAS_MODRM, Gv, Ev, NONE, NULL}, // Bit Scan Reverse
-    [0xbe] = {"MOVSX",   0, HAS_MODRM, Gv, Eb, NONE, NULL}, // ·ûºÅÀ©Õ¹ÒÆ¶¯ Byte -> Word/Dword
-    [0xbf] = {"MOVSX",   0, HAS_MODRM, Gv, Ew, NONE, NULL}, // ·ûºÅÀ©Õ¹ÒÆ¶¯ Word -> Dword
+    [0xbe] = {"MOVSX",   0, HAS_MODRM, Gv, Eb, NONE, NULL}, // ç¬¦å·æ‰©å±•ç§»åŠ¨ Byte -> Word/Dword
+    [0xbf] = {"MOVSX",   0, HAS_MODRM, Gv, Ew, NONE, NULL}, // ç¬¦å·æ‰©å±•ç§»åŠ¨ Word -> Dword
 
     // 0xC0 - 0xC7: XADD
     [0xc0] = {"XADD", 0, HAS_MODRM, Eb, Gb, NONE, NULL},
     [0xc1] = {"XADD", 0, HAS_MODRM, Ev, Gv, NONE, NULL},
 
-    // 0xC8 - 0xCF: BSWAP (×Ö½Ú½»»»)
-    // ÀàËÆÓÚ Opcode Map 0x50-0x57 µÄ PUSH/POP£¬ÕâÀïÒ²ÊÇÇ¶Èë¼Ä´æÆ÷±àºÅµÄ
+    // 0xC8 - 0xCF: BSWAP (å­—èŠ‚äº¤æ¢)
+    // ç±»ä¼¼äº Opcode Map 0x50-0x57 çš„ PUSH/POPï¼Œè¿™é‡Œä¹Ÿæ˜¯åµŒå…¥å¯„å­˜å™¨ç¼–å·çš„
     [0xc8] = {"BSWAP", 0, 0, OP_rAX, NONE, NONE, NULL},
     [0xc9] = {"BSWAP", 0, 0, OP_rCX, NONE, NONE, NULL},
     [0xca] = {"BSWAP", 0, 0, OP_rDX, NONE, NONE, NULL},
@@ -473,16 +473,16 @@ const OpcodeEntry two_byte_opcode_table[256] = {
     [0xcf] = {"BSWAP", 0, 0, OP_rDI, NONE, NONE, NULL},
 };
 
-//¼Ä´æÆ÷Ãû³Æ
+//å¯„å­˜å™¨åç§°
 const char* reg8[] = { "AL", "CL", "DL", "BL", "AH", "CH", "DH", "BH" };
 const char* reg16[] = { "AX", "CX", "DX", "BX", "SP", "BP", "SI", "DI" };
 const char* reg32[] = { "EAX", "ECX", "EDX", "EBX", "ESP", "EBP", "ESI", "EDI" };
-//¶Î¼Ä´æÆ÷Ãû³Æ
+//æ®µå¯„å­˜å™¨åç§°
 const char* SEG_REGS[] = {  "ES", "CS", "SS", "DS", "FS", "GS", "???", "???"};
-//16Î»Ñ°Ö·Ä£Ê½ÏÂµÄrm×Ö¶Î¶ÔÓ¦µÄÑ°Ö··½Ê½
+//16ä½å¯»å€æ¨¡å¼ä¸‹çš„rmå­—æ®µå¯¹åº”çš„å¯»å€æ–¹å¼
 const char* rm16_str[] = { "BX+SI", "BX+DI", "BP+SI", "BP+DI", "SI", "DI", "BP", "BX" };
 
-const char* GetRegisterName(int reg_size, int reg_index) { //¶Î¼Ä´æÆ÷¿´×÷size1
+const char* GetRegisterName(int reg_size, int reg_index) { //æ®µå¯„å­˜å™¨çœ‹ä½œsize1
     switch (reg_size) {
         case 1:
             return  SEG_REGS[reg_index];
@@ -492,7 +492,7 @@ const char* GetRegisterName(int reg_size, int reg_index) { //¶Î¼Ä´æÆ÷¿´×÷size1
             return reg16[reg_index];
         case 32:
             return reg32[reg_index];
-        // Ìí¼ÓÆäËû¼Ä´æÆ÷ÀàĞÍµÄ´¦Àí
+        // æ·»åŠ å…¶ä»–å¯„å­˜å™¨ç±»å‹çš„å¤„ç†
         default:
             return "???";
     }
@@ -503,33 +503,33 @@ static bool IsImmediate(OperandType type) {
             type == Jb || type == Jz || type == Ap || type == Ob || type == Ov);
 }
 
-// ¶ÁÈ¡Ò»¸ö×Ö½Ú
+// è¯»å–ä¸€ä¸ªå­—èŠ‚
 static uint8_t ReadByte(DecodeContext* ctx) {
     if (ctx->pos >= ctx->max_len) return 0;
     return ctx->buffer[ctx->pos++];
 }
-// ¶ÁÈ¡Ò»¸ö×Ö
+// è¯»å–ä¸€ä¸ªå­—
 static inline uint16_t ReadWord(DecodeContext* ctx) {
-    if (ctx->pos + 2 > ctx->max_len) return 0; // Ò»´ÎĞÔ¼ì²é
+    if (ctx->pos + 2 > ctx->max_len) return 0; // ä¸€æ¬¡æ€§æ£€æŸ¥
     uint16_t val = *(uint16_t*)(ctx->buffer + ctx->pos);
     ctx->pos += 2;
     return val;
 }
-// ¶ÁÈ¡Ò»¸öË«×Ö
+// è¯»å–ä¸€ä¸ªåŒå­—
 static inline uint32_t ReadDword(DecodeContext* ctx) {
-    if (ctx->pos + 4 > ctx->max_len) return 0; // Ò»´ÎĞÔ¼ì²é
+    if (ctx->pos + 4 > ctx->max_len) return 0; // ä¸€æ¬¡æ€§æ£€æŸ¥
     uint32_t val = *(uint32_t*)(ctx->buffer + ctx->pos);
     ctx->pos += 4;
     return val;
 }
 
-// ½âÎöÇ°×º
-// Ç°×º·ÖÎª4×é£º
-// 1. Ëø/ÖØ¸´Ç°×º (LOCK, REP/REPNE)
-// 2. ¶Î¸²¸ÇÇ°×º (CS, SS, DS, ES, FS, GS)
-// 3. ²Ù×÷Êı´óĞ¡¸²¸Ç (0x66) - ÇĞ»» 16/32 Î»²Ù×÷Êı
-// 4. µØÖ·´óĞ¡¸²¸Ç (0x67) - ÇĞ»» 16/32 Î»µØÖ·Ä£Ê½
-static void ParsePrefixes(DecodeContext* ctx) {
+// è§£æå‰ç¼€
+// å‰ç¼€åˆ†ä¸º4ç»„ï¼š
+// 1. é”/é‡å¤å‰ç¼€ (LOCK, REP/REPNE)
+// 2. æ®µè¦†ç›–å‰ç¼€ (CS, SS, DS, ES, FS, GS)
+// 3. æ“ä½œæ•°å¤§å°è¦†ç›– (0x66) - åˆ‡æ¢ 16/32 ä½æ“ä½œæ•°
+// 4. åœ°å€å¤§å°è¦†ç›– (0x67) - åˆ‡æ¢ 16/32 ä½åœ°å€æ¨¡å¼
+void ParsePrefixes(DecodeContext* ctx) {
     bool has_prefix = true;
     while (has_prefix && ctx->pos < ctx->max_len) {
         uint8_t byte = ctx->buffer[ctx->pos];
@@ -547,23 +547,23 @@ static void ParsePrefixes(DecodeContext* ctx) {
     }
 }
 
-// ½âÎö ModR/M ×Ö½Ú
-// ModR/M ¸ñÊ½: [Mod:2][Reg/Opcode:3][R/M:3]
-// Mod: Ñ°Ö·Ä£Ê½ (00=ÄÚ´æ, 01=ÄÚ´æ+disp8, 10=ÄÚ´æ+disp32, 11=¼Ä´æÆ÷)
-// Reg: ¼Ä´æÆ÷Ë÷Òı »ò Opcode À©Õ¹ (È¡¾öÓÚÖ¸Áî)
-// R/M: ¼Ä´æÆ÷Ë÷Òı »ò ÄÚ´æÑ°Ö··½Ê½
-static void ParseModRM(DecodeContext* ctx) {
+// è§£æ ModR/M å­—èŠ‚
+// ModR/M æ ¼å¼: [Mod:2][Reg/Opcode:3][R/M:3]
+// Mod: å¯»å€æ¨¡å¼ (00=å†…å­˜, 01=å†…å­˜+disp8, 10=å†…å­˜+disp32, 11=å¯„å­˜å™¨)
+// Reg: å¯„å­˜å™¨ç´¢å¼• æˆ– Opcode æ‰©å±• (å–å†³äºæŒ‡ä»¤)
+// R/M: å¯„å­˜å™¨ç´¢å¼• æˆ– å†…å­˜å¯»å€æ–¹å¼
+void ParseModRM(DecodeContext* ctx) {
     ctx->modrm = ReadByte(ctx);
     ctx->mod = (ctx->modrm >> 6) & 0x3;
     ctx->reg = (ctx->modrm >> 3) & 0x7;
     ctx->rm = ctx->modrm & 0x7;
 }
 
-// ½âÎö SIB ×Ö½Ú
-// SIB ¸ñÊ½: [Scale:2][Index:3][Base:3]
-// ÓÃÓÚ¸´ÔÓµÄÄÚ´æÑ°Ö·: [Base + Index * (2^Scale) + Disp]
-// ½öÔÚ ModR/M µÄ R/M ×Ö¶ÎÎª 100 (ESP) Ê±³öÏÖ (32Î»Ä£Ê½ÏÂ)
-static void ParseSIB(DecodeContext* ctx) {
+// è§£æ SIB å­—èŠ‚
+// SIB æ ¼å¼: [Scale:2][Index:3][Base:3]
+// ç”¨äºå¤æ‚çš„å†…å­˜å¯»å€: [Base + Index * (2^Scale) + Disp]
+// ä»…åœ¨ ModR/M çš„ R/M å­—æ®µä¸º 100 (ESP) æ—¶å‡ºç° (32ä½æ¨¡å¼ä¸‹)
+void ParseSIB(DecodeContext* ctx) {
     ctx->sib = ReadByte(ctx);
     ctx->scale = (ctx->sib >> 6) & 0x3;
     ctx->index = (ctx->sib >> 3) & 0x7;
@@ -571,14 +571,14 @@ static void ParseSIB(DecodeContext* ctx) {
     ctx->has_sib = true;
 }
 
-// ½âÎöÎ»ÒÆ
-static void ParseDisplacement(DecodeContext* ctx) {
+// è§£æä½ç§»
+void ParseDisplacement(DecodeContext* ctx) {
     int addr_size = (ctx->pfx_addr_size == 0x67) ? 16 : 32;
     
     if (addr_size == 32) {
-        // 32Î»Ñ°Ö·
+        // 32ä½å¯»å€
         if (ctx->mod == 0 && ctx->rm == 5) { //rm->ebp
-            // Mod=00, R/M=101 (EBP) ÊÇÌØÊâÇé¿ö£¬±íÊ¾½öÓĞ32Î»Î»ÒÆ [disp32]£¬Ã»ÓĞ»ùÖ·¼Ä´æÆ÷
+            // Mod=00, R/M=101 (EBP) æ˜¯ç‰¹æ®Šæƒ…å†µï¼Œè¡¨ç¤ºä»…æœ‰32ä½ä½ç§» [disp32]ï¼Œæ²¡æœ‰åŸºå€å¯„å­˜å™¨
             // disp32
             ctx->disp = (int32_t)ReadDword(ctx);
             ctx->disp_len = 4;
@@ -593,15 +593,15 @@ static void ParseDisplacement(DecodeContext* ctx) {
             ctx->disp = (int32_t)ReadDword(ctx);
             ctx->disp_len = 4;
         } else if (ctx->has_sib && ctx->mod == 0 && ctx->base == 5) { 
-            // SIB mod=0 base=5 -> disp32 Intel ¹æ¶¨Õâ²»ÊÇ [EBP + Index*Scale]£¬¶øÊÇ [disp32 + Index*Scale]¡£Ò²¾ÍÊÇËµ£¬EBP ±»¸ÉµôÁË£¬Ìæ»»³ÉÁËÒ»¸ö 32 Î»Î»ÒÆ¡£
-            // ÕâÊÇÒ»¸ö·Ç³£ÈİÒ×³ö´íµÄ½ÇÂäÇé¿ö
+            // SIB mod=0 base=5 -> disp32 Intel è§„å®šè¿™ä¸æ˜¯ [EBP + Index*Scale]ï¼Œè€Œæ˜¯ [disp32 + Index*Scale]ã€‚ä¹Ÿå°±æ˜¯è¯´ï¼ŒEBP è¢«å¹²æ‰äº†ï¼Œæ›¿æ¢æˆäº†ä¸€ä¸ª 32 ä½ä½ç§»ã€‚
+            // è¿™æ˜¯ä¸€ä¸ªéå¸¸å®¹æ˜“å‡ºé”™çš„è§’è½æƒ…å†µ
             ctx->disp = (int32_t)ReadDword(ctx);
             ctx->disp_len = 4;
         }
     } else {
-        // 16Î»Ñ°Ö· (±È½ÏÉÙ¼û£¬µ«ÔÚÊµÄ£Ê½»òÊ¹ÓÃ 0x67 Ç°×ºÊ±³öÏÖ)
+        // 16ä½å¯»å€ (æ¯”è¾ƒå°‘è§ï¼Œä½†åœ¨å®æ¨¡å¼æˆ–ä½¿ç”¨ 0x67 å‰ç¼€æ—¶å‡ºç°)
         if (ctx->mod == 0 && ctx->rm == 6) {
-            // Mod=00, R/M=110 (BP) ÊÇÌØÊâÇé¿ö£¬±íÊ¾ [disp16]
+            // Mod=00, R/M=110 (BP) æ˜¯ç‰¹æ®Šæƒ…å†µï¼Œè¡¨ç¤º [disp16]
             ctx->disp = (int16_t)ReadWord(ctx);
             ctx->disp_len = 2;
         } else if (ctx->mod == 1) {
@@ -614,8 +614,8 @@ static void ParseDisplacement(DecodeContext* ctx) {
     }
 }
 
-// ½âÎöÁ¢¼´Êı
-static void ParseImmediate(DecodeContext* ctx, OperandType type, int imm_index) {
+// è§£æç«‹å³æ•°
+void ParseImmediate(DecodeContext* ctx, OperandType type, int imm_index) {
     int op_size = (ctx->pfx_op_size == 0x66) ? 16 : 32;
     int addr_size = (ctx->pfx_addr_size == 0x67) ? 16 : 32;
     
@@ -663,8 +663,8 @@ static void ParseImmediate(DecodeContext* ctx, OperandType type, int imm_index) 
             }
             break;
         case Ap:
-            // Ô¶Ö¸Õë£ºÆ«ÒÆ+¶ÎÑ¡Ôñ×Ó (JMP FAR / CALL FAR)
-            // ±ØĞë·Ö¿ª¶ÁÈ¡ÒÔÈ·±£Ë³Ğò£ºÏÈ¶ÁÆ«ÒÆ(Offset)£¬ºó¶Á¶Î(Segment)
+            // è¿œæŒ‡é’ˆï¼šåç§»+æ®µé€‰æ‹©å­ (JMP FAR / CALL FAR)
+            // å¿…é¡»åˆ†å¼€è¯»å–ä»¥ç¡®ä¿é¡ºåºï¼šå…ˆè¯»åç§»(Offset)ï¼Œåè¯»æ®µ(Segment)
             if (op_size == 16) {
                 uint32_t offset = ReadWord(ctx);
                 uint32_t segment = ReadWord(ctx);
@@ -693,25 +693,25 @@ static void ParseImmediate(DecodeContext* ctx, OperandType type, int imm_index) 
     }
 }
 
-// ¸ñÊ½»¯ ModR/M ²Ù×÷Êı
-static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType type) {
+// æ ¼å¼åŒ– ModR/M æ“ä½œæ•°
+void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType type) {
     int op_size = (ctx->pfx_op_size == 0x66) ? 16 : 32;
     int addr_size = (ctx->pfx_addr_size == 0x67) ? 16 : 32;
     
-    // È·¶¨²Ù×÷Êı´óĞ¡
+    // ç¡®å®šæ“ä½œæ•°å¤§å°
     int operand_size = 32;
     if (type == Eb || type == Gb) operand_size = 8;
     else if (type == Ew || type == Gw) operand_size = 16;
     else if (type == Ev || type == Gv || type == Gz) operand_size = op_size;
     
-    // Èç¹ûÊÇ¼Ä´æÆ÷
+    // å¦‚æœæ˜¯å¯„å­˜å™¨
     if (ctx->mod == 3) {
         const char* reg_name = GetRegisterName(operand_size, ctx->rm);
         snprintf(buf, size, "%s", reg_name);
         return;
     }
     
-    // ÄÚ´æ²Ù×÷Êı
+    // å†…å­˜æ“ä½œæ•°
     char size_prefix[16] = "";
     if (type == Eb || type == Gb) strcpy(size_prefix, "BYTE PTR ");
     else if (type == Ew || type == Gw) strcpy(size_prefix, "WORD PTR ");
@@ -724,10 +724,10 @@ static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType typ
         else strcpy(size_prefix, "DWORD PTR ");
     }
     else if (type == Mp) {
-        // Mp: °üº¬Ô¶Ö¸ÕëµÄÄÚ´æ²Ù×÷Êı
-        // ´óĞ¡ÓÉ²Ù×÷Êı´óĞ¡ (0x66) ¾ö¶¨£¬¶ø²»ÊÇµØÖ·´óĞ¡ (0x67)
-        // 16Î»²Ù×÷Êı: 16Î»Æ«ÒÆ + 16Î»¶Î = 32Î» (DWORD)
-        // 32Î»²Ù×÷Êı: 32Î»Æ«ÒÆ + 16Î»¶Î = 48Î» (FWORD)
+        // Mp: åŒ…å«è¿œæŒ‡é’ˆçš„å†…å­˜æ“ä½œæ•°
+        // å¤§å°ç”±æ“ä½œæ•°å¤§å° (0x66) å†³å®šï¼Œè€Œä¸æ˜¯åœ°å€å¤§å° (0x67)
+        // 16ä½æ“ä½œæ•°: 16ä½åç§» + 16ä½æ®µ = 32ä½ (DWORD)
+        // 32ä½æ“ä½œæ•°: 32ä½åç§» + 16ä½æ®µ = 48ä½ (FWORD)
         if (op_size == 16) strcpy(size_prefix, "DWORD PTR ");
         else strcpy(size_prefix, "FWORD PTR ");
     }
@@ -735,11 +735,17 @@ static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType typ
         if (op_size == 16) strcpy(size_prefix, "DWORD PTR ");
         else strcpy(size_prefix, "QWORD PTR ");
     }
+    else if (type == M_F32 || type == M_I32) strcpy(size_prefix, "DWORD PTR ");
+    else if (type == M_F64 || type == M_I64) strcpy(size_prefix, "QWORD PTR ");
+    else if (type == M_F80 || type == M_BCD) strcpy(size_prefix, "TBYTE PTR ");
+    else if (type == M_I16 || type == M_SW || type == M_CW) strcpy(size_prefix, "WORD PTR ");
+    else if (type == M_ENV) strcpy(size_prefix, ""); // Environment size varies
+    else if (type == M_STATE) strcpy(size_prefix, ""); // State size varies
     
-    // ´¦Àí¶ÎÇ°×º
+    // å¤„ç†æ®µå‰ç¼€
     char seg_prefix[8] = "";
     if (ctx->pfx_segment) {
-        // Èç¹ûÓĞÏÔÊ½µÄ¶ÎÇ°×º£¬Ö±½ÓÊ¹ÓÃ
+        // å¦‚æœæœ‰æ˜¾å¼çš„æ®µå‰ç¼€ï¼Œç›´æ¥ä½¿ç”¨
         switch (ctx->pfx_segment) {
             case 0x26: strcpy(seg_prefix, "ES:"); break;
             case 0x2E: strcpy(seg_prefix, "CS:"); break;
@@ -750,13 +756,13 @@ static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType typ
             default: break;
         }
     } else {
-        // Èç¹ûÃ»ÓĞ¶ÎÇ°×º£¬¸ù¾İ»ùÖ·¼Ä´æÆ÷ÍÆ¶ÏÄ¬ÈÏ¶Î¼Ä´æÆ÷
-        // ¹æÔò£º»ùÖ·ÊÇ ESP »ò EBP (»ò BP) Ê±£¬Ä¬ÈÏÊ¹ÓÃ SS£¬·ñÔòÊ¹ÓÃ DS
+        // å¦‚æœæ²¡æœ‰æ®µå‰ç¼€ï¼Œæ ¹æ®åŸºå€å¯„å­˜å™¨æ¨æ–­é»˜è®¤æ®µå¯„å­˜å™¨
+        // è§„åˆ™ï¼šåŸºå€æ˜¯ ESP æˆ– EBP (æˆ– BP) æ—¶ï¼Œé»˜è®¤ä½¿ç”¨ SSï¼Œå¦åˆ™ä½¿ç”¨ DS
         bool use_ss = false;
         if (addr_size == 32) {
             if (ctx->rm == 4 && ctx->has_sib) {
                 if (ctx->base == 4) use_ss = true; // ESP base -> SS
-                else if (ctx->base == 5 && ctx->mod != 0) use_ss = true; // EBP base -> SS (×¢Òâ Mod=0Ê± Base=5ÊÇdisp32£¬²»ÊÇEBP)
+                else if (ctx->base == 5 && ctx->mod != 0) use_ss = true; // EBP base -> SS (æ³¨æ„ Mod=0æ—¶ Base=5æ˜¯disp32ï¼Œä¸æ˜¯EBP)
             } else if (ctx->rm == 5 && ctx->mod != 0) {
                 use_ss = true; // EBP base -> SS
             }
@@ -770,21 +776,21 @@ static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType typ
     char addr_buf[64] = "";
     
     if (addr_size == 32) {
-        // 32Î»Ñ°Ö·
+        // 32ä½å¯»å€
         if (ctx->mod == 0 && ctx->rm == 5) {
             snprintf(addr_buf, sizeof(addr_buf), "[0x%08X]", (uint32_t)ctx->disp);
         } else if (ctx->rm == 4) {
-            // ÓĞSIB×Ö½Ú
+            // æœ‰SIBå­—èŠ‚
             if (ctx->has_sib) {
                 char base_str[16] = ""; 
                 char index_str[32] = "";
                 char disp_str[16] = "";
                 
-				if (!(ctx->base == 5 && ctx->mod == 0)) {  //²»ÊÇÕâÖÖÌØÊâÇé¿öÔòÏÔÊ¾base
+				if (!(ctx->base == 5 && ctx->mod == 0)) {  //ä¸æ˜¯è¿™ç§ç‰¹æ®Šæƒ…å†µåˆ™æ˜¾ç¤ºbase
                     strcpy(base_str, GetRegisterName(32, ctx->base));
                 }
                 
-				if (ctx->index != 4) { // ESP²»ÄÜ×÷ÎªË÷Òı£¬ËùÒÔindex=4 ±íÊ¾Ã»ÓĞË÷Òı¼Ä´æÆ÷
+				if (ctx->index != 4) { // ESPä¸èƒ½ä½œä¸ºç´¢å¼•ï¼Œæ‰€ä»¥index=4 è¡¨ç¤ºæ²¡æœ‰ç´¢å¼•å¯„å­˜å™¨
                     int scale_val = 1 << ctx->scale;
                     if (scale_val == 1)
                         snprintf(index_str, sizeof(index_str), "+%s", GetRegisterName(32, ctx->index));
@@ -802,7 +808,7 @@ static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType typ
                 snprintf(addr_buf, sizeof(addr_buf), "[%s%s%s]", base_str, index_str, disp_str);
             }
         } else {
-            // ÆÕÍ¨Ñ°Ö·
+            // æ™®é€šå¯»å€
             const char* base_reg = GetRegisterName(32, ctx->rm);
             if (ctx->disp > 0) {
                 snprintf(addr_buf, sizeof(addr_buf), "[%s+0x%X]", base_reg, (uint32_t)ctx->disp);
@@ -813,7 +819,7 @@ static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType typ
             }
         }
     } else {
-        // 16Î»Ñ°Ö·
+        // 16ä½å¯»å€
         if (ctx->mod == 0 && ctx->rm == 6) {
             snprintf(addr_buf, sizeof(addr_buf), "[0x%X]", (uint16_t)ctx->disp);
         } else {
@@ -834,8 +840,8 @@ static void FormatModRM(DecodeContext* ctx, char* buf, int size, OperandType typ
     snprintf(buf, size, "%s%s%s", size_prefix, seg_prefix, addr_buf);
 }
 
-// ¸ñÊ½»¯²Ù×÷Êı
-static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType type, int* imm_index) {
+// æ ¼å¼åŒ–æ“ä½œæ•°
+void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType type, int* imm_index) {
     int op_size = (ctx->pfx_op_size == 0x66) ? 16 : 32;
     
     int64_t val = 0;
@@ -849,7 +855,7 @@ static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType t
             buf[0] = '\0';
             break;
             
-        // ¼Ä´æÆ÷²Ù×÷Êı
+        // å¯„å­˜å™¨æ“ä½œæ•°
         case Gb:
             snprintf(buf, size, "%s", GetRegisterName(8, ctx->reg));
             break;
@@ -864,7 +870,7 @@ static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType t
             snprintf(buf, size, "%s", GetRegisterName(1, ctx->reg));
             break;
             
-        // ÄÚ´æ/¼Ä×¢²á²Ù×÷Êı
+        // å†…å­˜/å¯„æ³¨å†Œæ“ä½œæ•°
         case Eb:
         case Ew:
         case Ev:
@@ -875,7 +881,7 @@ static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType t
             FormatModRM(ctx, buf, size, type);
             break;
             
-        // Á¢¼´Êı
+        // ç«‹å³æ•°
         case Ib:
             snprintf(buf, size, "0x%X", (uint8_t)val);
             break;
@@ -894,20 +900,20 @@ static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType t
             uint16_t seg;
             uint32_t off;
             if (op_size == 16) {
-                // 16:16 ¸ñÊ½
+                // 16:16 æ ¼å¼
                 off = val & 0xFFFF;
                 seg = (val >> 16) & 0xFFFF;
                 snprintf(buf, size, "0x%04X:0x%04X", seg, off);
             }
             else {
-                // 16:32 ¸ñÊ½
+                // 16:32 æ ¼å¼
                 off = (uint32_t)(val & 0xFFFFFFFF);
                 seg = (uint16_t)((val >> 32) & 0xFFFF);
                 snprintf(buf, size, "0x%04X:0x%08X", seg, off);
             }
             break;
         }
-        // Ïà¶ÔÌø×ª
+        // ç›¸å¯¹è·³è½¬
         case Jb:
         case Jz:
             snprintf(buf, size, "0x%08X", (uint32_t)(ctx->eip + ctx->pos + val));
@@ -945,7 +951,7 @@ static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType t
             }
             break;
             
-        // ¹Ì¶¨¼Ä´æÆ÷
+        // å›ºå®šå¯„å­˜å™¨
         case OP_AL: snprintf(buf, size, "AL"); break;
         case OP_CL: snprintf(buf, size, "CL"); break;
         case OP_DL: snprintf(buf, size, "DL"); break;
@@ -968,6 +974,23 @@ static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType t
         case OP_SS: snprintf(buf, size, "SS"); break;
         case OP_DS: snprintf(buf, size, "DS"); break;
         case OP_ONE: snprintf(buf, size, "1"); break;
+        
+        case OP_ST0: snprintf(buf, size, "ST(0)"); break;
+        case OP_STi: snprintf(buf, size, "ST(%d)", ctx->rm); break;
+
+        case M_F32:
+        case M_F64:
+        case M_F80:
+        case M_I16:
+        case M_I32:
+        case M_I64:
+        case M_BCD:
+        case M_ENV:
+        case M_SW:
+        case M_CW:
+        case M_STATE:
+            FormatModRM(ctx, buf, size, type);
+            break;
             
         default:
             snprintf(buf, size, "???");
@@ -975,88 +998,360 @@ static void FormatOperand(DecodeContext* ctx, char* buf, int size, OperandType t
     }
 }
 
+void ParseFPU(DecodeContext* ctx) {
+    uint8_t op = ctx->opcode;
+    uint8_t mod = ctx->mod;
+    uint8_t reg = ctx->reg;
+    uint8_t rm = ctx->rm;
+
+    // Default
+    ctx->entry.mnemonic = "FPU?";
+    ctx->entry.op1 = NONE;
+    ctx->entry.op2 = NONE;
+    ctx->entry.op3 = NONE;
+
+    switch (op) {
+        case 0xD8:
+            if (mod != 3) {
+                ctx->entry.op1 = M_F32;
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FADD"; break;
+                    case 1: ctx->entry.mnemonic = "FMUL"; break;
+                    case 2: ctx->entry.mnemonic = "FCOM"; break;
+                    case 3: ctx->entry.mnemonic = "FCOMP"; break;
+                    case 4: ctx->entry.mnemonic = "FSUB"; break;
+                    case 5: ctx->entry.mnemonic = "FSUBR"; break;
+                    case 6: ctx->entry.mnemonic = "FDIV"; break;
+                    case 7: ctx->entry.mnemonic = "FDIVR"; break;
+                }
+            } else {
+                ctx->entry.op1 = OP_ST0;
+                ctx->entry.op2 = OP_STi;
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FADD"; break;
+                    case 1: ctx->entry.mnemonic = "FMUL"; break;
+                    case 2: ctx->entry.mnemonic = "FCOM"; ctx->entry.op1 = OP_STi; ctx->entry.op2 = NONE; break;
+                    case 3: ctx->entry.mnemonic = "FCOMP"; ctx->entry.op1 = OP_STi; ctx->entry.op2 = NONE; break;
+                    case 4: ctx->entry.mnemonic = "FSUB"; break;
+                    case 5: ctx->entry.mnemonic = "FSUBR"; break;
+                    case 6: ctx->entry.mnemonic = "FDIV"; break;
+                    case 7: ctx->entry.mnemonic = "FDIVR"; break;
+                }
+            }
+            break;
+        case 0xD9:
+            if (mod != 3) {
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FLD"; ctx->entry.op1 = M_F32; break;
+                    case 2: ctx->entry.mnemonic = "FST"; ctx->entry.op1 = M_F32; break;
+                    case 3: ctx->entry.mnemonic = "FSTP"; ctx->entry.op1 = M_F32; break;
+                    case 4: ctx->entry.mnemonic = "FLDENV"; ctx->entry.op1 = M_ENV; break;
+                    case 5: ctx->entry.mnemonic = "FLDCW"; ctx->entry.op1 = M_CW; break;
+                    case 6: ctx->entry.mnemonic = "FNSTENV"; ctx->entry.op1 = M_ENV; break;
+                    case 7: ctx->entry.mnemonic = "FNSTCW"; ctx->entry.op1 = M_CW; break;
+                }
+            } else {
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FLD"; ctx->entry.op1 = OP_STi; break;
+                    case 1: ctx->entry.mnemonic = "FXCH"; ctx->entry.op1 = OP_STi; break;
+                    case 2: 
+                        if (rm == 0) ctx->entry.mnemonic = "FNOP";
+                        else { ctx->entry.mnemonic = "FSTP"; ctx->entry.op1 = OP_STi; }
+                        break;
+                    case 4:
+                        switch (rm) {
+                            case 0: ctx->entry.mnemonic = "FCHS"; break;
+                            case 1: ctx->entry.mnemonic = "FABS"; break;
+                            case 4: ctx->entry.mnemonic = "FTST"; break;
+                            case 5: ctx->entry.mnemonic = "FXAM"; break;
+                        }
+                        break;
+                    case 5:
+                        switch (rm) {
+                            case 0: ctx->entry.mnemonic = "FLD1"; break;
+                            case 1: ctx->entry.mnemonic = "FLDL2T"; break;
+                            case 2: ctx->entry.mnemonic = "FLDL2E"; break;
+                            case 3: ctx->entry.mnemonic = "FLDPI"; break;
+                            case 4: ctx->entry.mnemonic = "FLDLG2"; break;
+                            case 5: ctx->entry.mnemonic = "FLDLN2"; break;
+                            case 6: ctx->entry.mnemonic = "FLDZ"; break;
+                        }
+                        break;
+                    case 6:
+                        if (rm == 0) ctx->entry.mnemonic = "F2XM1";
+                        else if (rm == 1) ctx->entry.mnemonic = "FYL2X";
+                        else if (rm == 2) ctx->entry.mnemonic = "FPTAN";
+                        else if (rm == 3) ctx->entry.mnemonic = "FPATAN";
+                        else if (rm == 4) ctx->entry.mnemonic = "FXTRACT";
+                        else if (rm == 5) ctx->entry.mnemonic = "FPREM1";
+                        else if (rm == 6) ctx->entry.mnemonic = "FDECSTP";
+                        else if (rm == 7) ctx->entry.mnemonic = "FINCSTP";
+                        break;
+                    case 7:
+                        if (rm == 0) ctx->entry.mnemonic = "FPREM";
+                        else if (rm == 1) ctx->entry.mnemonic = "FYL2XP1";
+                        else if (rm == 2) ctx->entry.mnemonic = "FSQRT";
+                        else if (rm == 3) ctx->entry.mnemonic = "FSINCOS";
+                        else if (rm == 4) ctx->entry.mnemonic = "FRNDINT";
+                        else if (rm == 5) ctx->entry.mnemonic = "FSCALE";
+                        else if (rm == 6) ctx->entry.mnemonic = "FSIN";
+                        else if (rm == 7) ctx->entry.mnemonic = "FCOS";
+                        break;
+                }
+            }
+            break;
+        case 0xDA:
+            if (mod != 3) {
+                ctx->entry.op1 = M_I32;
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FIADD"; break;
+                    case 1: ctx->entry.mnemonic = "FIMUL"; break;
+                    case 2: ctx->entry.mnemonic = "FICOM"; break;
+                    case 3: ctx->entry.mnemonic = "FICOMP"; break;
+                    case 4: ctx->entry.mnemonic = "FISUB"; break;
+                    case 5: ctx->entry.mnemonic = "FISUBR"; break;
+                    case 6: ctx->entry.mnemonic = "FIDIV"; break;
+                    case 7: ctx->entry.mnemonic = "FIDIVR"; break;
+                }
+            } else {
+                if (reg == 5 && rm == 1) ctx->entry.mnemonic = "FUCOMPP";
+                else {
+                    ctx->entry.op1 = OP_ST0;
+                    ctx->entry.op2 = OP_STi;
+                    switch (reg) {
+                        case 0: ctx->entry.mnemonic = "FCMOVB"; break;
+                        case 1: ctx->entry.mnemonic = "FCMOVE"; break;
+                        case 2: ctx->entry.mnemonic = "FCMOVBE"; break;
+                        case 3: ctx->entry.mnemonic = "FCMOVU"; break;
+                    }
+                }
+            }
+            break;
+        case 0xDB:
+            if (mod != 3) {
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FILD"; ctx->entry.op1 = M_I32; break;
+                    case 1: ctx->entry.mnemonic = "FISTTP"; ctx->entry.op1 = M_I32; break;
+                    case 2: ctx->entry.mnemonic = "FIST"; ctx->entry.op1 = M_I32; break;
+                    case 3: ctx->entry.mnemonic = "FISTP"; ctx->entry.op1 = M_I32; break;
+                    case 5: ctx->entry.mnemonic = "FLD"; ctx->entry.op1 = M_F80; break;
+                    case 7: ctx->entry.mnemonic = "FSTP"; ctx->entry.op1 = M_F80; break;
+                }
+            } else {
+                if (reg == 4) {
+                    if (rm == 2) ctx->entry.mnemonic = "FCLEX";
+                    else if (rm == 3) ctx->entry.mnemonic = "FINIT";
+                } else {
+                    ctx->entry.op1 = OP_ST0;
+                    ctx->entry.op2 = OP_STi;
+                    switch (reg) {
+                        case 0: ctx->entry.mnemonic = "FCMOVNB"; break;
+                        case 1: ctx->entry.mnemonic = "FCMOVNE"; break;
+                        case 2: ctx->entry.mnemonic = "FCMOVNBE"; break;
+                        case 3: ctx->entry.mnemonic = "FCMOVNU"; break;
+                        case 5: ctx->entry.mnemonic = "FUCOMI"; break;
+                        case 6: ctx->entry.mnemonic = "FCOMI"; break;
+                    }
+                }
+            }
+            break;
+        case 0xDC:
+            if (mod != 3) {
+                ctx->entry.op1 = M_F64;
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FADD"; break;
+                    case 1: ctx->entry.mnemonic = "FMUL"; break;
+                    case 2: ctx->entry.mnemonic = "FCOM"; break;
+                    case 3: ctx->entry.mnemonic = "FCOMP"; break;
+                    case 4: ctx->entry.mnemonic = "FSUB"; break;
+                    case 5: ctx->entry.mnemonic = "FSUBR"; break;
+                    case 6: ctx->entry.mnemonic = "FDIV"; break;
+                    case 7: ctx->entry.mnemonic = "FDIVR"; break;
+                }
+            } else {
+                ctx->entry.op1 = OP_STi;
+                ctx->entry.op2 = OP_ST0;
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FADD"; break;
+                    case 1: ctx->entry.mnemonic = "FMUL"; break;
+                    case 4: ctx->entry.mnemonic = "FSUBR"; break;
+                    case 5: ctx->entry.mnemonic = "FSUB"; break;
+                    case 6: ctx->entry.mnemonic = "FDIVR"; break;
+                    case 7: ctx->entry.mnemonic = "FDIV"; break;
+                }
+            }
+            break;
+        case 0xDD:
+            if (mod != 3) {
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FLD"; ctx->entry.op1 = M_F64; break;
+                    case 1: ctx->entry.mnemonic = "FISTTP"; ctx->entry.op1 = M_I64; break;
+                    case 2: ctx->entry.mnemonic = "FST"; ctx->entry.op1 = M_F64; break;
+                    case 3: ctx->entry.mnemonic = "FSTP"; ctx->entry.op1 = M_F64; break;
+                    case 4: ctx->entry.mnemonic = "FRSTOR"; ctx->entry.op1 = M_STATE; break;
+                    case 6: ctx->entry.mnemonic = "FNSAVE"; ctx->entry.op1 = M_STATE; break;
+                    case 7: ctx->entry.mnemonic = "FNSTSW"; ctx->entry.op1 = M_SW; break;
+                }
+            } else {
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FFREE"; ctx->entry.op1 = OP_STi; break;
+                    case 1: ctx->entry.mnemonic = "FXCH"; ctx->entry.op1 = OP_STi; break;
+                    case 2: ctx->entry.mnemonic = "FST"; ctx->entry.op1 = OP_STi; break;
+                    case 3: ctx->entry.mnemonic = "FSTP"; ctx->entry.op1 = OP_STi; break;
+                    case 4: ctx->entry.mnemonic = "FUCOM"; ctx->entry.op1 = OP_STi; break;
+                    case 5: ctx->entry.mnemonic = "FUCOMP"; ctx->entry.op1 = OP_STi; break;
+                }
+            }
+            break;
+        case 0xDE:
+            if (mod != 3) {
+                ctx->entry.op1 = M_I16;
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FIADD"; break;
+                    case 1: ctx->entry.mnemonic = "FIMUL"; break;
+                    case 2: ctx->entry.mnemonic = "FICOM"; break;
+                    case 3: ctx->entry.mnemonic = "FICOMP"; break;
+                    case 4: ctx->entry.mnemonic = "FISUB"; break;
+                    case 5: ctx->entry.mnemonic = "FISUBR"; break;
+                    case 6: ctx->entry.mnemonic = "FIDIV"; break;
+                    case 7: ctx->entry.mnemonic = "FIDIVR"; break;
+                }
+            } else {
+                if (reg == 3 && rm == 1) ctx->entry.mnemonic = "FCOMPP";
+                else {
+                    ctx->entry.op1 = OP_STi;
+                    ctx->entry.op2 = OP_ST0;
+                    switch (reg) {
+                        case 0: ctx->entry.mnemonic = "FADDP"; break;
+                        case 1: ctx->entry.mnemonic = "FMULP"; break;
+                        case 4: ctx->entry.mnemonic = "FSUBRP"; break;
+                        case 5: ctx->entry.mnemonic = "FSUBP"; break;
+                        case 6: ctx->entry.mnemonic = "FDIVRP"; break;
+                        case 7: ctx->entry.mnemonic = "FDIVP"; break;
+                    }
+                }
+            }
+            break;
+        case 0xDF:
+            if (mod != 3) {
+                switch (reg) {
+                    case 0: ctx->entry.mnemonic = "FILD"; ctx->entry.op1 = M_I16; break;
+                    case 1: ctx->entry.mnemonic = "FISTTP"; ctx->entry.op1 = M_I16; break;
+                    case 2: ctx->entry.mnemonic = "FIST"; ctx->entry.op1 = M_I16; break;
+                    case 3: ctx->entry.mnemonic = "FISTP"; ctx->entry.op1 = M_I16; break;
+                    case 4: ctx->entry.mnemonic = "FBLD"; ctx->entry.op1 = M_BCD; break;
+                    case 5: ctx->entry.mnemonic = "FILD"; ctx->entry.op1 = M_I64; break;
+                    case 6: ctx->entry.mnemonic = "FBSTP"; ctx->entry.op1 = M_BCD; break;
+                    case 7: ctx->entry.mnemonic = "FISTP"; ctx->entry.op1 = M_I64; break;
+                }
+            } else {
+                if (reg == 4 && rm == 0) { ctx->entry.mnemonic = "FNSTSW"; ctx->entry.op1 = OP_rAX; }
+                else if (reg == 5) { ctx->entry.mnemonic = "FUCOMI"; ctx->entry.op1 = OP_ST0; ctx->entry.op2 = OP_STi; }
+                else if (reg == 6) { ctx->entry.mnemonic = "FCOMI"; ctx->entry.op1 = OP_ST0; ctx->entry.op2 = OP_STi; }
+            }
+            break;
+    }
+}
+
 int Disassemble(uint8_t* buffer, uint32_t eip, DecodeContext* out_ctx) {
+    int instr_len = ParseInstuction(buffer, eip, out_ctx);
+    FormatInstruction(buffer,out_ctx);
+	return instr_len;
+}
+
+
+int ParseInstuction(uint8_t* buffer, uint32_t eip, DecodeContext* out_ctx) {
     memset(out_ctx, 0, sizeof(DecodeContext));
     out_ctx->buffer = buffer;
     out_ctx->max_len = MAX_INSTRUCTION_LENGTH;
     out_ctx->eip = eip;
-    
-    
-    // 1. ½âÎöÇ°×º
+
+
+    // 1. è§£æå‰ç¼€
     ParsePrefixes(out_ctx);
-    
-    // 2. ¼ì²éÊÇ·ñÊÇË«×Ö½Ú²Ù×÷Âë
-    // 0x0F ÊÇ×ªÒå×Ö½Ú£¬±íÊ¾ºóÃæ½ô¸úµÄÊÇË«×Ö½Ú²Ù×÷Âë±íÖĞµÄÖ¸Áî
+
+    // 2. æ£€æŸ¥æ˜¯å¦æ˜¯åŒå­—èŠ‚æ“ä½œç 
+    // 0x0F æ˜¯è½¬ä¹‰å­—èŠ‚ï¼Œè¡¨ç¤ºåé¢ç´§è·Ÿçš„æ˜¯åŒå­—èŠ‚æ“ä½œç è¡¨ä¸­çš„æŒ‡ä»¤
     if (out_ctx->pos < out_ctx->max_len && buffer[out_ctx->pos] == 0x0F) {
         out_ctx->is_two_byte_opcode = true;
         out_ctx->pos++;
     }
-    
-    // 3. ¶ÁÈ¡²Ù×÷Âë
+
+    // 3. è¯»å–æ“ä½œç 
     out_ctx->opcode = ReadByte(out_ctx);
-    
-    // 4. ²éÕÒÖ¸Áî±íÏî
+
+    // 4. æŸ¥æ‰¾æŒ‡ä»¤è¡¨é¡¹
     OpcodeEntry* entry;
     if (out_ctx->is_two_byte_opcode) {
         entry = (OpcodeEntry*)&two_byte_opcode_table[out_ctx->opcode];
-    } else {
+    }
+    else {
         entry = (OpcodeEntry*)&opcode_table[out_ctx->opcode];
     }
-    
+
     if (entry->mnemonic == NULL && entry->group_table == NULL && !entry->is_prefix) {
-        // Î´ÖªÖ¸Áî
+        // æœªçŸ¥æŒ‡ä»¤
         snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "??? [%02X]", out_ctx->opcode);
-        
-        // ´òÓ¡ÒÑ¶ÁÈ¡µÄËùÓĞ×Ö½Ú
+
+        // æ‰“å°å·²è¯»å–çš„æ‰€æœ‰å­—èŠ‚
         int hex_pos = 0;
         for (int i = 0; i < out_ctx->pos && i < 15; i++) {
             hex_pos += snprintf(out_ctx->hex_str + hex_pos, sizeof(out_ctx->hex_str) - hex_pos, "%02X ", buffer[i]);
         }
         return out_ctx->pos;
     }
-    
+
     out_ctx->entry = *entry;
-    
-    // 5. ½âÎö ModR/M
-    // Èç¹ûÖ¸Áî¶¨ÒåÖĞ±ê¼ÇÁË HAS_MODRM£¬Ôò±ØĞë½âÎö ModR/M ×Ö½Ú
-    // ModR/M ×Ö½Ú¾ö¶¨ÁË²Ù×÷ÊıÊÇ¼Ä´æÆ÷»¹ÊÇÄÚ´æ£¬ÒÔ¼°¾ßÌåµÄÑ°Ö··½Ê½
+
+    // 5. è§£æ ModR/M
+    // å¦‚æœæŒ‡ä»¤å®šä¹‰ä¸­æ ‡è®°äº† HAS_MODRMï¼Œåˆ™å¿…é¡»è§£æ ModR/M å­—èŠ‚
+    // ModR/M å­—èŠ‚å†³å®šäº†æ“ä½œæ•°æ˜¯å¯„å­˜å™¨è¿˜æ˜¯å†…å­˜ï¼Œä»¥åŠå…·ä½“çš„å¯»å€æ–¹å¼
     if (entry->has_modrm) {
         ParseModRM(out_ctx);
         out_ctx->has_modrm = true;
-        
-        // ¼ì²éÊÇ·ñĞèÒª SIB
-        // 32Î»Ä£Ê½ÏÂ£¬µ± R/M = 100 (ESP) Ê±£¬±íÊ¾ºóÃæ½ô¸ú SIB ×Ö½Ú
+
+        // æ£€æŸ¥æ˜¯å¦éœ€è¦ SIB
+        // 32ä½æ¨¡å¼ä¸‹ï¼Œå½“ R/M = 100 (ESP) æ—¶ï¼Œè¡¨ç¤ºåé¢ç´§è·Ÿ SIB å­—èŠ‚
         if (out_ctx->mod != 3 && out_ctx->rm == 4 && (out_ctx->pfx_addr_size != 0x67)) {
             ParseSIB(out_ctx);
         }
-        
-        // ½âÎöÎ»ÒÆ
+
+        // è§£æä½ç§»
         ParseDisplacement(out_ctx);
     }
-    
-    // 6. ´¦Àí·Ö×éÖ¸Áî
-    // Ä³Ğ© Opcode (Èç 0x80, 0x81, 0x83, 0xFF µÈ) ²¢²»¶ÔÓ¦µ¥Ò»Ö¸Áî
-    // ¶øÊÇ¸ù¾İ ModR/M ÖĞµÄ Reg ×Ö¶Î (0-7) À´Çø·Ö²»Í¬µÄÖ¸Áî (Èç ADD, OR, ADC...)
-    // Õâ¾ÍÊÇËùÎ½µÄ "Group" »úÖÆ
+
+    // 6. å¤„ç†åˆ†ç»„æŒ‡ä»¤
+    // æŸäº› Opcode (å¦‚ 0x80, 0x81, 0x83, 0xFF ç­‰) å¹¶ä¸å¯¹åº”å•ä¸€æŒ‡ä»¤
+    // è€Œæ˜¯æ ¹æ® ModR/M ä¸­çš„ Reg å­—æ®µ (0-7) æ¥åŒºåˆ†ä¸åŒçš„æŒ‡ä»¤ (å¦‚ ADD, OR, ADC...)
+    // è¿™å°±æ˜¯æ‰€è°“çš„ "Group" æœºåˆ¶
     const char* mnemonic = entry->mnemonic;
     OperandType op1 = entry->op1;
     OperandType op2 = entry->op2;
     OperandType op3 = entry->op3;
-    
+
     if (entry->group_table != NULL) {
-        // Ê¹ÓÃ ModR/M µÄ Reg ×Ö¶Î×÷ÎªË÷Òı²é Group ±í
+        // ä½¿ç”¨ ModR/M çš„ Reg å­—æ®µä½œä¸ºç´¢å¼•æŸ¥ Group è¡¨
         GroupEntry* group = &entry->group_table[out_ctx->reg];
         if (group->mnemonic != NULL) {
             mnemonic = group->mnemonic;
-            // Group ±íµÄ²Ù×÷Êı¿ÉÄÜ¸²¸ÇÖ÷±í
-            // ÀıÈç F6/F7 Group 3£¬Opcode ±íÀï²Ù×÷ÊıÊÇ NONE£¬ÍêÈ«ÓÉ Group ±í¶¨Òå
+            // Group è¡¨çš„æ“ä½œæ•°å¯èƒ½è¦†ç›–ä¸»è¡¨
+            // ä¾‹å¦‚ F6/F7 Group 3ï¼ŒOpcode è¡¨é‡Œæ“ä½œæ•°æ˜¯ NONEï¼Œå®Œå…¨ç”± Group è¡¨å®šä¹‰
             if (group->operand[0] != NONE) op1 = group->operand[0];
             if (group->operand[1] != NONE) op2 = group->operand[1];
             if (group->operand[2] != NONE) op3 = group->operand[2];
         }
     }
 
-    // ´¦Àí 0x66 Ç°×ºµ¼ÖÂµÄÖú¼Ç·û±ä»¯
+    // å¤„ç† FPU æŒ‡ä»¤ (0xD8 - 0xDF)
+    if (out_ctx->opcode >= 0xD8 && out_ctx->opcode <= 0xDF) {
+        ParseFPU(out_ctx);
+        mnemonic = out_ctx->entry.mnemonic;
+        op1 = out_ctx->entry.op1;
+        op2 = out_ctx->entry.op2;
+        op3 = out_ctx->entry.op3;
+    }
+
+    // å¤„ç† 0x66 å‰ç¼€å¯¼è‡´çš„åŠ©è®°ç¬¦å˜åŒ–
     if (out_ctx->pfx_op_size == 0x66 && !out_ctx->is_two_byte_opcode) {
         switch (out_ctx->opcode) {
             case 0x60: mnemonic = "PUSHA"; break;
@@ -1073,24 +1368,40 @@ int Disassemble(uint8_t* buffer, uint32_t eip, DecodeContext* out_ctx) {
             case 0xCF: mnemonic = "IRET"; break;
         }
     }
-    
-    // 7. ½âÎöÁ¢¼´Êı
-    int imm_parse_idx = 0; //¸ù¾İ´«ÈëµÄË÷Òı£¨0 »ò 1£©£¬¾ö¶¨½«¶ÁÈ¡µ½µÄÖµĞ´Èë ctx->imm »¹ÊÇ ctx->imm2¡£
-    if (IsImmediate(op1)) ParseImmediate(out_ctx, op1, imm_parse_idx++); 
+
+    // å°†è§£æå‡ºçš„æœ€ç»ˆ mnemonic å’Œ operand æ›´æ–°å› context
+    out_ctx->entry.mnemonic = mnemonic;
+    out_ctx->entry.op1 = op1;
+    out_ctx->entry.op2 = op2;
+    out_ctx->entry.op3 = op3;
+
+    // 7. è§£æç«‹å³æ•°
+    int imm_parse_idx = 0; //æ ¹æ®ä¼ å…¥çš„ç´¢å¼•ï¼ˆ0 æˆ– 1ï¼‰ï¼Œå†³å®šå°†è¯»å–åˆ°çš„å€¼å†™å…¥ ctx->imm è¿˜æ˜¯ ctx->imm2ã€‚
+    if (IsImmediate(op1)) ParseImmediate(out_ctx, op1, imm_parse_idx++);
     if (IsImmediate(op2)) ParseImmediate(out_ctx, op2, imm_parse_idx++);
     if (IsImmediate(op3)) ParseImmediate(out_ctx, op3, imm_parse_idx++);
-    
-    // 8. Éú³É»ã±à×Ö·û´®
+
+    return out_ctx->pos;
+}
+
+
+void FormatInstruction(uint8_t* buffer,DecodeContext* out_ctx) {
+	OperandType op1 = out_ctx->entry.op1;
+    OperandType op2 = out_ctx->entry.op2;
+    OperandType op3 = out_ctx->entry.op3;
+	const char* mnemonic = out_ctx->entry.mnemonic;
+
+    // 8. ç”Ÿæˆæ±‡ç¼–å­—ç¬¦ä¸²
     char operand1[64] = "";
     char operand2[64] = "";
     char operand3[64] = "";
-    
+
     int imm_fmt_idx = 0;
     if (op1 != NONE) FormatOperand(out_ctx, operand1, sizeof(operand1), op1, &imm_fmt_idx);
     if (op2 != NONE) FormatOperand(out_ctx, operand2, sizeof(operand2), op2, &imm_fmt_idx);
     if (op3 != NONE) FormatOperand(out_ctx, operand3, sizeof(operand3), op3, &imm_fmt_idx);
-    
-    // ×é×°×îÖÕ×Ö·û´®
+
+    // ç»„è£…æœ€ç»ˆå­—ç¬¦ä¸²
     char prefix_str[32] = "";
     if (out_ctx->pfx_lock) strcat(prefix_str, "LOCK ");
     if (out_ctx->pfx_rep) strcat(prefix_str, "REP ");
@@ -1098,26 +1409,27 @@ int Disassemble(uint8_t* buffer, uint32_t eip, DecodeContext* out_ctx) {
 
 
     if (op3 != NONE) {
-        snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "%s%s %s, %s, %s", 
-                 prefix_str, mnemonic, operand1, operand2, operand3);
-    } else if (op2 != NONE) {
-        snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "%s%s %s, %s", 
-                 prefix_str, mnemonic, operand1, operand2);
-    } else if (op1 != NONE) {
-        snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "%s%s %s", 
-                 prefix_str, mnemonic, operand1);
-    } else {
+        snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "%s%s %s, %s, %s",
+            prefix_str, mnemonic, operand1, operand2, operand3);
+    }
+    else if (op2 != NONE) {
+        snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "%s%s %s, %s",
+            prefix_str, mnemonic, operand1, operand2);
+    }
+    else if (op1 != NONE) {
+        snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "%s%s %s",
+            prefix_str, mnemonic, operand1);
+    }
+    else {
         snprintf(out_ctx->asm_str, sizeof(out_ctx->asm_str), "%s%s", prefix_str, mnemonic);
     }
-    
-    // 9. Éú³É»úÆ÷ÂëÊ®Áù½øÖÆ×Ö·û´®
+
+    // 9. ç”Ÿæˆæœºå™¨ç åå…­è¿›åˆ¶å­—ç¬¦ä¸²
     int instr_len = out_ctx->pos;
     int hex_pos = 0;
     for (int i = 0; i < instr_len && i < 15; i++) {
         hex_pos += snprintf(out_ctx->hex_str + hex_pos, sizeof(out_ctx->hex_str) - hex_pos,
-                           "%02X ", buffer[i]);
+            "%02X ", buffer[i]);
     }
-    
-    return instr_len;
-}
 
+}

@@ -1,4 +1,4 @@
-﻿#include "PETools.h"
+#include "PETools.h"
 
 
 DWORD ReadPEFile(IN LPCSTR lpszFile, OUT LPVOID* ppFileBuffer) {
