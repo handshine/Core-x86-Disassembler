@@ -328,20 +328,8 @@ void ParseFPU(DecodeContext* ctx) {
 *（目前为了方便演示各种坑位，这里放出来的是第一种测试模式下终端输出的效果）*
 
 跑起来的输出令人感到极致顺滑：
-```text
-========== x86 反汇编引擎测试 ==========
+<img width="916" height="694" alt="1772199814519" src="https://github.com/user-attachments/assets/88f75264-efbd-4c42-9c54-3a3e84d3c4b1" />
 
-40                                            INC EAX
-89C3                                          MOV EBX, EAX
-81C3EFBEADDE                                  ADD EBX, DEADBEEF
-668B4508                                      MOV AX, WORD PTR [EBP+8]
-648B0530000000                                MOV EAX, FS:DWORD PTR [30]
-D8448D10                                      FADD DWORD PTR [EBP+ECX*4+10]
-D9E1                                          FABS
-E800000000                                    CALL 0
-...
-========== 测试完成 ==========
-```
 
 所有的字节流被完美还原出了对应的硬编码及正确的汇编指令结构，包含段寄存器覆盖、正确的内存寻径解析，以及复杂的浮点 FPU 指令。
 
