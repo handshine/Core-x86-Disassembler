@@ -24,6 +24,107 @@
 ## 二、 整体架构与数据结构设计
 
 任何庞大的解析系统，数据结构都是灵魂。x86 指令长度不定（1~15 字节），要想有条理地解析它，首先得定义好我们的“操作数类型”和“解码上下文”。
+这个图展示了代码的静态组织结构和逻辑依赖关系。
+```mermaid
+graph TB
+    %% 样式定义
+    classDef app fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef core fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
+    classDef data fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef struct fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+
+    %% --- 应用层 ---
+    %% 修复点：标题加了引号
+    subgraph AppLayer ["应用层 / 测试驱动 (反汇编引擎.c)"]
+        direction TB
+        MainFunc([Main Entry]):::app
+        TestBuffer[Test Hex Codes Buffer]:::data
+        OutputIO[Console Output]:::app
+    end
+
+    %% --- 核心引擎层 ---
+    %% 修复点：标题加了引号
+    subgraph CoreEngine ["反汇编核心引擎 (disasm.c / disasm.h)"]
+        direction TB
+
+        %% 接口
+        API_Disassemble[[Disassemble Interface]]:::core
+
+        %% 数据上下文
+        ContextStruct(DecodeContext Struct):::struct
+
+        %% 核心逻辑：主控
+        subgraph Logic_Controller [逻辑控制]
+            ParseInst[ParseInstuction]:::core
+            FormatInst[FormatInstruction]:::core
+        end
+
+        %% 核心逻辑：解码器子系统
+        subgraph Logic_Decoder [解码子系统]
+            direction TB
+            PrefixParser["ParsePrefixes<br/>前缀处理"]:::core
+            OpcodeFetcher["Opcode Fetch<br/>指令读取"]:::core
+            ModRMParser["ParseModRM<br/>寻址模式解析"]:::core
+            SIBParser["ParseSIB<br/>复杂索引解析"]:::core
+            DispParser["ParseDisplacement<br/>位移解析"]:::core
+            ImmParser["ParseImmediate<br/>立即数解析"]:::core
+            FPUHandler["ParseFPU<br/>浮点指令处理"]:::core
+        end
+
+        %% 核心逻辑：格式化子系统
+        subgraph Logic_Formatter [格式化子系统]
+            FormatOp["FormatOperand<br/>操作数转文本"]:::core
+            FormatModRM_Func["FormatModRM<br/>内存表达式生成"]:::core
+            RegNameLookup["GetRegisterName<br/>寄存器名查询"]:::core
+        end
+
+        %% 静态数据表
+        subgraph Static_Tables [静态查找表]
+            OpTable["Opcode Table<br/>单字节指令表"]:::data
+            TwoByteTable["TwoByte Opcode Table<br/>0F开头指令表"]:::data
+            GroupTable["Group Tables<br/>ModRM扩展指令表"]:::data
+        end
+    end
+
+    %% --- 关系连线 ---
+
+    %% 应用层调用
+    MainFunc -->|调用| API_Disassemble
+    MainFunc -->|读取| TestBuffer
+    MainFunc -->|打印结果| OutputIO
+
+    %% 引擎内部流程
+    API_Disassemble -->|1解码| ParseInst
+    API_Disassemble -->|2格式化| FormatInst
+    
+    %% 解析流程依赖
+    ParseInst -->|初始化| ContextStruct
+    ParseInst -->|Step 1| PrefixParser
+    ParseInst -->|Step 2| OpcodeFetcher
+    ParseInst -->|Step 3| ModRMParser
+    ParseInst -->|Step 4| SIBParser
+    ParseInst -->|Step 5| DispParser
+    ParseInst -->|Step 6| ImmParser
+    ParseInst -->|特殊处理| FPUHandler
+
+    %% 数据表依赖
+    OpcodeFetcher -.->|查表| OpTable
+    OpcodeFetcher -.->|查表| TwoByteTable
+    ParseInst -.->|查表| GroupTable
+
+    %% 上下文读写
+    PrefixParser --写--> ContextStruct
+    ModRMParser --写--> ContextStruct
+    DispParser --写--> ContextStruct
+    ImmParser --写--> ContextStruct
+
+    %% 格式化依赖
+    FormatInst -->|读取| ContextStruct
+    FormatInst -->|处理操作数| FormatOp
+    FormatOp -->|解析内存| FormatModRM_Func
+    FormatOp -->|获取名称| RegNameLookup
+    FormatModRM_Func -->|获取名称| RegNameLookup
+```
 
 ### 1. 操作数类型抽象 (`OperandType`)
 
@@ -104,22 +205,27 @@ graph LR
 
 ```mermaid
 graph TD
-    A["原始字节流"] --> B("1. 解析前缀 (ParsePrefixes)")
-    B --> C("2. 读取操作码 (Opcode)")
-    C --> D{"是否为双字节拓展 (0x0F)?"}
-    D -- "是" --> E("查找双字节指令表")
-    D -- "否" --> F("查找单字节指令表")
-    E --> G{"是否包含 ModR/M?"}
-    F --> G
-    G -- "是" --> H("3. 解析 ModR/M 字节")
-    H --> I{"是否包含 SIB?"}
-    I -- "是" --> J("4. 解析 SIB (ParseSIB)")
-    I -- "否" --> K("5. 解析偏移 (ParseDisplacement)")
-    J --> K
-    G -- "否" --> L("5. 解析偏移 (ParseDisplacement)")
-    K --> L
-    L --> M("6. 解析立即数 (ParseImmediate)")
-    M --> N["格式化输出汇编字符串 (FormatInstruction)"]
+    Start["原始字节流"] --> ParsePrefix["1. 解析前缀 (ParsePrefixes)"]
+    ParsePrefix --> ReadOpcode["2. 读取操作码 (Opcode)"]
+    ReadOpcode --> Check0F{"是否为双字节拓展 (0x0F)?"}
+
+    Check0F -- "是" --> Table2["查找双字节指令表"]
+    Check0F -- "否" --> Table1["查找单字节指令表"]
+
+    Table1 --> HasModRM{"是否包含 ModR/M?"}
+    Table2 --> HasModRM
+
+    HasModRM -- "是" --> ParseModRM["3. 解析 ModR/M 字节"]
+    ParseModRM --> HasSIB{"是否包含 SIB?"}
+
+    HasSIB -- "是" --> ParseSIB["4. 解析 SIB (ParseSIB)"]
+    HasSIB -- "否" --> ParseDisp["5. 解析偏移 (ParseDisplacement)"]
+    ParseSIB --> ParseDisp
+
+    HasModRM -- "否" --> ParseDisp
+
+    ParseDisp --> ParseImm["6. 解析立即数 (ParseImmediate)"]
+    ParseImm --> Format["格式化输出汇编字符串 (FormatInstruction)"]
 ```
 
 ### 📌 核心 API 函数一览
@@ -266,7 +372,5 @@ E800000000                                    CALL 0
 
 **如果这篇反汇编引擎的文章大家觉得有帮助，反馈热烈的话，下一篇我将开源并为大家全面解析那个“x86 汇编虚拟解释器”的实现原理！**
 
-**感谢阅读，欢迎看雪的各位大佬批评指正和留言交流！** 逆向的浪漫，正是亲手撕开黑盒建立掌控感的过程，不是吗？
+**感谢阅读，欢迎各位大佬批评指正和留言交流！** 逆向的浪漫，正是亲手撕开黑盒建立掌控感的过程，不是吗？
 
----
-*(本文为看雪论坛专属发文，记录于逆向学习初级班·硬编码阶段。代码纯C手搓，请大家多多指教！)*
