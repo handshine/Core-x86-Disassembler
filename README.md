@@ -163,6 +163,7 @@ typedef struct {
 ## 三、 教你如何查阅 Intel 白皮书填表
 
 为了让解析符合直觉，我们的 `opcode_table` 数据结构是彻头彻尾地照着 Intel 手册附录 A 的 **One-byte Opcode Map (Table A-2)** 来填写的！
+![Uploading 1772197448291.png…]()
 
 打开 Opcode Map 表，这是一个按照高低半字节划分的二维网格（行代表高 4 位，列代表低 4 位）。以表中第一行（行为 `0`）为例，你可以清晰看到 `ADD` 指令的分布：
 - 第 `0` 列（Opcode `0x00`）：表格内写着 `ADD`，下方填写的参数是 `Eb, Gb`。
